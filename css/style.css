@@ -27,17 +27,21 @@ header {
     text-shadow: 6px 2px 0px #191923;
 }
 
+main {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 nav a,
-#cat_menu a,
+#cat-menu a,
 footer a {
     font-size: 20px;
-    color: aliceblue;
+    color: #FFFFFA;
     text-decoration: none;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
 }
-
 
 a:hover {
     color: #e6e6ab;
@@ -52,32 +56,36 @@ button {
     cursor: pointer;
 }
 
-main {
-    margin-left: 10%;
-    margin-right: 10%;
+#more {
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+
+    #more {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 }
 
 strong {
     color: #e6e6ab;
 }
 
-footer{
+nav,
+footer,
+#cat-menu {
     margin-top: 100px;
+    text-align: center;
+    overflow-x: auto;
 }
 
-.movie_image {
-    border-radius: 8px;
-    margin-right: 20px;
-    transition: transform 0.4s ease-in-out;
+#cat-menu {
+    margin-bottom: 60px;
 }
 
-.movie_image:hover {
-    filter: blur(1px);
-    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.5);
-    transform: scale(1.04);
-}
-
-#best {
+#best-container {
     display: flex;
     align-items: center;
     background-color: #232b35;
@@ -87,41 +95,78 @@ footer{
     padding: 20px;
 }
 
-#best_cat0,
-#best_cat1,
-#best_cat2,
-#choosen_cat {
-    border-radius: 8px;
-    background-color: #232b35;
-    padding: 14px;
-}
-
-.best_image {
+.best-image {
     flex: 1;
     width: 230px;
     height: auto;
     margin-right: 30px;
 }
 
-.image-container {
+
+
+#best-cat0,
+#best-cat1,
+#best-cat2,
+#choosen-cat {
+    border-radius: 8px;
+    background-color: #232b35;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(auto, max-content));
+    width: min-content;
+    grid-row-gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+    #best-cat0,
+    #best-cat1,
+    #best-cat2,
+    #choosen-cat {
+        grid-template-columns: repeat(2, minmax(auto, max-content));
+    }
+}
+
+@media screen and (min-width: 1023px) {
+
+    #best-cat0,
+    #best-cat1,
+    #best-cat2,
+    #choosen-cat {
+        grid-template-columns: repeat(3, minmax(auto, max-content));
+    }
+}
+
+.images-container {
     position: relative;
-    display: inline-block;
+}
+
+.movie-image {
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: transform 0.4s ease-in-out;
+}
+
+.movie-image:hover {
+    filter: blur(1px);
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.5);
+    transform: scale(1.04);
 }
 
 .image-title {
     position: absolute;
     bottom: 22px;
-    left: 0;
-    width: 91%;
+    left: 6px;
+    width: 190px;
     background-color: rgba(0, 0, 0, 0.9);
     font-family: Grotesk;
     color: #FFFFFA;
-    padding: 5px;
-    margin: 0;
     opacity: 0;
-    box-sizing: border-box;
     height: 60px;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,24 +176,15 @@ footer{
     opacity: 1;
 }
 
-#browse_categories {
-    margin-top: 120px;
-}
-
-
-#choosen_cat {
-    margin-top: 25px;
-}
-
 .left-sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 100px;
+    width: 50px;
     background-color: #262d38;
     z-index: -1;
-    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5)
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .right-sidebar {
@@ -156,13 +192,13 @@ footer{
     top: 0;
     right: 0;
     height: 100%;
-    width: 100px;
+    width: 50px;
     background-color: #2c3542;
     z-index: -1;
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
 }
 
-#rectangle {
+#modal {
     display: none;
     position: fixed;
     top: 50%;
@@ -171,16 +207,16 @@ footer{
     border-radius: 8px;
     width: 80%;
     height: 70%;
-    background-color: rgba(0, 0, 0, 0.9);
     border: 2px solid #14191f;
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 999;
 }
 
-#toggle-rectangle:checked + #rectangle {
+#toggle-modal:checked+#modal {
     display: block;
 }
 
-#close-rectangle {
+#close-modal {
     position: absolute;
     right: 0%;
     top: 0%;
@@ -193,14 +229,14 @@ footer{
     flex-direction: column;
 }
 
-#movie_details {
+#movie-details {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#datails_img,
-#details_container {
+#datails-img,
+#details-container {
     margin-right: 20px;
     margin-left: 20px;
 }

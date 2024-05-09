@@ -10,80 +10,81 @@
 
 <body>
 
+
     <div class="left-sidebar"></div>
     <div class="right-sidebar"></div>
 
-    <header>
-        <div align="center">
-            <h1>JUST STREAM IT</h1>
-        </div>
+    <header align="center">
+        <h1>JUST STREAM IT</h1>
     </header>
 
     <nav>
-        <div align="center">
-            <a href="index.html">Home</a>
-            <a href="#browse_categories">Categories</a>
-            <a href="">Search</a>
-            <a href="">About</a>
-        </div>
-    </nav>
-
-    <nav>
-
+        <a href="index.html">Home</a>
+        <a href="#browse-categories">Categories</a>
+        <a href="">Search</a>
+        <a href="">About</a>
     </nav>
 
     <main>
 
-        <div id="rectangle" style="display: none;">
-            <div id="movie_details">
-                <button id="close-rectangle">X</button>
-                <div id="datails_img"></div>
-                <div id="details_container"></div>
+        <div id="modal" style="display: none;">
+            <div id="movie-details">
+                <button id="close-modal">X</button>
+                <div id="datails-img"></div>
+                <div id="details-container"></div>
             </div>
         </div>
 
         <h2>The supreme <strong>masterpiece</strong></h2>
-        <section id="best">
 
-            <div id="best_movie"></div>
-            <div id="best_details">
-                <h2 id="best_title"></h2>
-                <h3 id="best_description"></h3>
-                <button id="toggle-rectangle">Details</button>
+        <section id="best-container">
+            <div id="best-movie"></div>
+            <div id="best-details">
+                <h2 id="best-title"></h2>
+                <h3 id="best-description"></h3>
+                <button id="toggle-modal">Details</button>
             </div>
-
         </section>
 
         <section>
             <h2>Totally cult, hidden <strong>treasures</strong></h2>
+            <div id="best-cat0"></div>
+            <div id="more">
+                <button id="more-button">Load more</button>
+            </div>
 
-            <div id="best_cat0" align="center"></div>
 
             <h2>The best of <strong>horror</strong>, thrills guaranteed</h2>
-
-            <div id="best_cat1" align="center"></div>
+            <div id="best-cat1"></div>
+            <div id="more">
+                <button id="more-button">Load more</button>
+            </div>
 
             <h2>Beyond the imagination: the horizons of <strong>SF</strong></h2>
-
-            <div id="best_cat2" align="center"></div>
+            <div id="best-cat2"></div>
+            <div id="more">
+                <button id="more-button">Load more</button>
+            </div>
         </section>
 
         <section>
-            <h2 id="browse_categories">Explore <strong id="choosen_name">Crime</strong></h2>
+            <h2 id="browse-categories">Explore <strong id="choosen-name">Crime</strong></h2>
 
-            <div id="cat_menu" align="center"></div>
-            <div id="choosen_cat" align="center"></div>
+            <div id="cat-menu"></div>
+
+            <div id="choosen-cat"></div>
+            <div id="more">
+                <button id="more-button">Load more</button>
+            </div>
         </section>
     </main>
 
     <footer>
-        <div align="center">
-            <a href="">Privacy & Legal</a>
-            <a href="">Ad Choices</a>
-            <a href="">Accessibility</a>
-            <a href="">Manage Cookies</a>
-            <h4>© 2024 Just Stream It. Tous droits réservés.</h4>
-        </div>
+        <a href="">Privacy & Legal</a>
+        <a href="">Ad Choices</a>
+        <a href="">Accessibility</a>
+        <a href="">Manage Cookies</a>
+        <h4>© 2024 Just Stream It. Tous droits réservés.</h4>
     </footer>
 
     <script src="js/main.js"></script>
