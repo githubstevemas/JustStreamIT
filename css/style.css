@@ -35,12 +35,21 @@ main {
 nav a,
 #cat-menu a,
 footer a {
-    font-size: 20px;
+    font-size: 15px;
     color: #FFFFFA;
     text-decoration: none;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 1023px) {
+
+    nav a,
+    #cat-menu a,
+    footer a {
+        font-size: 20px;
+    }
 }
 
 a:hover {
@@ -78,7 +87,7 @@ footer,
 #cat-menu {
     margin-top: 100px;
     text-align: center;
-    overflow-x: auto;
+    overflow-wrap: break-word;
 }
 
 #cat-menu {
@@ -103,14 +112,24 @@ footer,
     }
 }
 
-.best-image {
-    flex: 1;
-    width: 230px;
-    height: auto;
-    margin-right: 30px;
+#best-movie {
+    display: flex;
+    justify-content: center;
 }
 
+.best-image {
+    flex: 1;
+    width: 180px;
+    height: auto;
+    margin: 14px;
+}
 
+@media screen and (min-width: 768px) {
+
+    .best-image {
+        width: 230px;
+    }
+}
 
 #best-cat0,
 #best-cat1,
@@ -120,7 +139,7 @@ footer,
     background-color: #232b35;
     padding: 14px;
     display: grid;
-    grid-template-columns: repeat(1, minmax(auto, max-content));
+    grid-template-columns: repeat(1, auto);
     width: min-content;
     grid-row-gap: 20px;
     justify-items: center;
@@ -129,23 +148,41 @@ footer,
     margin-right: auto;
 }
 
-@media screen and (min-width: 768px) {
 
-    #best-cat0,
-    #best-cat1,
-    #best-cat2,
-    #choosen-cat {
-        grid-template-columns: repeat(2, minmax(auto, max-content));
+@media screen and (max-width: 767px) {
+
+    #best-cat0> :nth-child(n+3),
+    #best-cat1> :nth-child(n+3),
+    #best-cat2> :nth-child(n+3),
+    #choosen-cat> :nth-child(n+3) {
+        display: none;
     }
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1023px){
 
     #best-cat0,
     #best-cat1,
     #best-cat2,
     #choosen-cat {
-        grid-template-columns: repeat(3, minmax(auto, max-content));
+        grid-template-columns: repeat(2, auto);
+    }
+
+    #best-cat0> :nth-child(n+5),
+    #best-cat1> :nth-child(n+5),
+    #best-cat2> :nth-child(n+5),
+    #choosen-cat> :nth-child(n+5) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    #best-cat0,
+    #best-cat1,
+    #best-cat2,
+    #choosen-cat {
+        grid-template-columns: repeat(3, auto);
     }
 }
 
