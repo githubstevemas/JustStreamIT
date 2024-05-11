@@ -172,6 +172,9 @@ fetch('http://localhost:8000/api/v1/genres/?&page_size=30')
                 let choosen_name = document.getElementById('choosen-name');
                 choosen_name.textContent = drama_list[i].name;
 
+                let revealButton = document.getElementById('more-choosen-cat');
+                revealButton.style.display = "block";
+
                 fetch(url)
                     .then(response => response.json())
                     .then(datas => {
@@ -203,4 +206,40 @@ document.getElementById('close-modal').addEventListener('click', function (event
     var rectangle = document.getElementById('modal');
     rectangle.style.display = 'none';
     event.stopPropagation();
+});
+
+document.getElementById("more-cat0").addEventListener("click", function() {
+    var hiddenElements = document.querySelectorAll("#best-cat0 > :nth-child(n+3)");
+    hiddenElements.forEach(function(element) {
+        element.style.display = "block";
+    });
+
+    this.style.display = "none";
+});
+
+document.getElementById("more-cat1").addEventListener("click", function() {
+    var hiddenElements = document.querySelectorAll("#best-cat1 > :nth-child(n+3)");
+    hiddenElements.forEach(function(element) {
+        element.style.display = "block";
+    });
+
+    this.style.display = "none";
+});
+
+document.getElementById("more-cat2").addEventListener("click", function() {
+    var hiddenElements = document.querySelectorAll("#best-cat2 > :nth-child(n+3)");
+    hiddenElements.forEach(function(element) {
+        element.style.display = "block";
+    });
+
+    this.style.display = "none";
+});
+
+document.getElementById("more-choosen-cat").addEventListener("click", function() {
+    var hiddenElements = document.querySelectorAll("#choosen-cat > :nth-child(n+3)");
+    hiddenElements.forEach(function(element) {
+        element.style.display = "block";
+    });
+
+    this.style.display = "none";
 });
