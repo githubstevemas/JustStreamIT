@@ -52,7 +52,7 @@ function display_details(details) {
     details_worldwide_gross_income.textContent = "Worldwide gross : " + details.worldwide_gross_income;
     details_container.appendChild(details_worldwide_gross_income);
 
-    let details_long_description = document.createElement('h4');
+    let details_long_description = document.createElement('p');
     details_long_description.textContent = "Description : " + details.long_description;
     details_container.appendChild(details_long_description);
 };
@@ -169,7 +169,7 @@ fetch('http://localhost:8000/api/v1/genres/?&page_size=30')
 
             categorie.addEventListener('click', function () {
 
-                let choosen_name = document.getElementById('choosen-name');
+                let choosen_name = document.getElementById('best-cat3');
                 choosen_name.textContent = drama_list[i].name;
 
                 let revealButton = document.getElementById('more-choosen-cat');
@@ -208,40 +208,15 @@ document.getElementById('close-modal').addEventListener('click', function (event
     event.stopPropagation();
 });
 
-document.getElementById("more-cat0").addEventListener("click", function() {
-    var hiddenElements = document.querySelectorAll("#best-cat0 > :nth-child(n+3)");
-    hiddenElements.forEach(function(element) {
-        element.style.display = "block";
-    });
-    this.style.display = "none";
-    
-    let lessCat0Btn = document.getElementById('less-cat0-btn');
-    lessCat0Btn.style.display = "block";
-});
 
-document.getElementById("more-cat1").addEventListener("click", function() {
-    var hiddenElements = document.querySelectorAll("#best-cat1 > :nth-child(n+3)");
-    hiddenElements.forEach(function(element) {
-        element.style.display = "block";
-    });
+function toggleVisibility(event) {
+    const button = event.currentTarget;
+    const targetSelector = button.getAttribute('data-target');
+    const container = document.querySelector(targetSelector);
+    const isShowingAll = container.classList.toggle('show-all');
+    button.textContent = isShowingAll ? 'Voir moins' : 'Voir plus';
+  }
 
-    this.style.display = "none";
-});
-
-document.getElementById("more-cat2").addEventListener("click", function() {
-    var hiddenElements = document.querySelectorAll("#best-cat2 > :nth-child(n+3)");
-    hiddenElements.forEach(function(element) {
-        element.style.display = "block";
-    });
-
-    this.style.display = "none";
-});
-
-document.getElementById("more-choosen-cat").addEventListener("click", function() {
-    var hiddenElements = document.querySelectorAll("#choosen-cat > :nth-child(n+3)");
-    hiddenElements.forEach(function(element) {
-        element.style.display = "block";
-    });
-
-    this.style.display = "none";
-});
+  document.querySelectorAll('.toggle-button').forEach(button => {
+    button.addEventListener('click', toggleVisibility);
+  });

@@ -174,17 +174,26 @@ footer,
     margin-right: auto;
 }
 
-@media screen and (max-width: 767px) {
+.images-container {
+    display: none;
+}
 
-    #best-cat0> :nth-child(n+3),
-    #best-cat1> :nth-child(n+3),
-    #best-cat2> :nth-child(n+3),
-    #choosen-cat> :nth-child(n+3) {
-        display: none;
+.show-all .images-container {
+    display: block;
+}
+
+@media (max-width: 767px) {
+
+    #best-cat0 .images-container:nth-child(-n+2),
+    #best-cat1 .images-container:nth-child(-n+2),
+    #best-cat2 .images-container:nth-child(-n+2),
+    #best-cat3 .images-container:nth-child(-n+2) {
+        display: block;
+        position: relative;
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 991px) {
 
     #best-cat0,
     #best-cat1,
@@ -193,15 +202,16 @@ footer,
         grid-template-columns: repeat(2, auto);
     }
 
-    #best-cat0> :nth-child(n+5),
-    #best-cat1> :nth-child(n+5),
-    #best-cat2> :nth-child(n+5),
-    #choosen-cat> :nth-child(n+5) {
-        display: none;
+    #best-cat0 .images-container:nth-child(-n+4),
+    #best-cat1 .images-container:nth-child(-n+4),
+    #best-cat2 .images-container:nth-child(-n+4),
+    #best-cat3 .images-container:nth-child(-n+4) {
+        display: block;
+        position: relative;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 992px) {
 
     #best-cat0,
     #best-cat1,
@@ -209,10 +219,32 @@ footer,
     #choosen-cat {
         grid-template-columns: repeat(3, auto);
     }
+
+    #best-cat0 .images-container,
+    #best-cat1 .images-container,
+    #best-cat2 .images-container,
+    #best-cat3 .images-container {
+        display: block;
+        position: relative;
+    }
 }
 
-.images-container {
-    position: relative;
+.more-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.toggle-button {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .toggle-button {
+        display: block;
+    }
+
+    /* Affiche le bouton sur les petits et moyens écrans */
 }
 
 .movie-image {
