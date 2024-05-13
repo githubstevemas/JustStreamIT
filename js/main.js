@@ -1,10 +1,10 @@
 function display_modal(details) {
 
-    var rectangle = document.getElementById('modal');
-    var display = rectangle.style.display;
-    rectangle.style.display = display === 'none' ? 'block' : 'none';
+    var modal = document.getElementById('modal');
+    var display = modal.style.display;
+    modal.style.display = display === 'none' ? 'block' : 'none';
 
-    let details_img = document.getElementById('datails-img');
+    let details_img = document.getElementById('details-img');
     details_img.innerHTML = '';
     let img = document.createElement('img');
     img.src = details.image_url;
@@ -17,10 +17,10 @@ function display_modal(details) {
     
 function display_details(details) {
 
-    let details_container = document.getElementById('details-container');
+    let details_container = document.getElementById('details-text');
     details_container.innerHTML = '';
 
-    let details_title = document.createElement('h2');
+    let details_title = document.createElement('p');
     details_title.textContent = details.title;
     details_container.appendChild(details_title);
 
@@ -197,14 +197,14 @@ fetch('http://localhost:8000/api/v1/titles/?genre=Crime&sort_by=-imdb_score&page
 
 
 document.getElementById('toggle-modal').addEventListener('click', function () {
-    var rectangle = document.getElementById('modal');
-    var display = rectangle.style.display;
-    rectangle.style.display = display === 'none' ? 'block' : 'none';
+    var modal = document.getElementById('modal');
+    var display = modal.style.display;
+    modal.style.display = display === 'none' ? 'block' : 'none';
 });
 
 document.getElementById('close-modal').addEventListener('click', function (event) {
-    var rectangle = document.getElementById('modal');
-    rectangle.style.display = 'none';
+    var modal = document.getElementById('modal');
+    modal.style.display = 'none';
     event.stopPropagation();
 });
 
@@ -213,8 +213,10 @@ document.getElementById("more-cat0").addEventListener("click", function() {
     hiddenElements.forEach(function(element) {
         element.style.display = "block";
     });
-
     this.style.display = "none";
+    
+    let lessCat0Btn = document.getElementById('less-cat0-btn');
+    lessCat0Btn.style.display = "block";
 });
 
 document.getElementById("more-cat1").addEventListener("click", function() {

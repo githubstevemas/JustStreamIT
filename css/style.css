@@ -20,11 +20,29 @@ h2 {
     margin-bottom: 25px;
 }
 
-header {
+#fixed-header {
+    position: fixed;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    background-color: #232b35;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    z-index: 998;
+}
+
+#logo-ban {
+    position: relative;
+    left: -20%;
     font-size: 40px;
     font-family: Jumper;
-    color: #D64933;
-    text-shadow: 6px 2px 0px #191923;
+    color: #773a42;
+    text-shadow: 6px 2px 6px #000000;
+    margin-block-start: 5px;
+    margin-block-end: 0;
+}
+
+#slogan {
+    margin-top: 80px;
 }
 
 main {
@@ -78,6 +96,10 @@ button {
     }
 }
 
+#less-cat0-btn {
+    display: none;
+}
+
 strong {
     color: #e6e6ab;
 }
@@ -98,8 +120,10 @@ footer,
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: #232b35;
     border-radius: 8px;
+    border: 1px solid #fffffa28;
+    background-color: #232b35;
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -136,7 +160,9 @@ footer,
 #best-cat2,
 #choosen-cat {
     border-radius: 8px;
+    border: 1px solid #fffffa28;
     background-color: #232b35;
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
     padding: 14px;
     display: grid;
     grid-template-columns: repeat(1, auto);
@@ -148,7 +174,6 @@ footer,
     margin-right: auto;
 }
 
-
 @media screen and (max-width: 767px) {
 
     #best-cat0> :nth-child(n+3),
@@ -159,7 +184,7 @@ footer,
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px){
+@media screen and (min-width: 768px) and (max-width: 1023px) {
 
     #best-cat0,
     #best-cat1,
@@ -255,7 +280,8 @@ footer,
     transform: translate(-50%, -50%);
     border-radius: 8px;
     width: 80%;
-    height: 70%;
+    height: auto;
+    overflow-y: auto;
     border: 2px solid #14191f;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 999;
@@ -278,13 +304,13 @@ footer,
     flex-direction: column;
 }
 
-#movie-details {
+#details-container {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#datails-img,
+#details-img,
 #details-container {
     margin-right: 20px;
     margin-left: 20px;

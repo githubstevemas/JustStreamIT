@@ -6,33 +6,32 @@
     <title>JustStreamIt</title>
     <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link rel="icon" href="images/logo.png">
 </head>
 
 <body>
 
-
-    <div class="left-sidebar"></div>
-    <div class="right-sidebar"></div>
-
     <header align="center">
-        <h1>JUST STREAM IT</h1>
+        <div id="fixed-header">
+            <p id="logo-ban">JUST STREAM IT.</p>
+        </div>
+        <h3 id="slogan">Your beautiful collection of popular, top rated and box office movies.</h3>
     </header>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="#browse-categories">Categories</a>
-        <a href="">Search</a>
-        <a href="">About</a>
+        <a href="explore.html">Search</a>
+        <a href="#about">About</a>
     </nav>
 
     <main>
 
-        <div id="modal" style="display: none;">
-            <div id="movie-details">
+        <div id="modal" style="display: none">
+            <div id="details-container">
                 <button id="close-modal">X</button>
-                <div id="datails-img"></div>
-                <div id="details-container"></div>
+                <div id="details-img"></div>
+                <div id="details-text"></div>
             </div>
         </div>
 
@@ -53,7 +52,9 @@
             <div id="more">
                 <button id="more-cat0">Load more</button>
             </div>
-
+            <div id="less-cat0">
+                <button id="less-cat0-btn">See less</button>
+            </div>
 
             <h2>The best of <strong>horror</strong>, thrills guaranteed</h2>
             <div id="best-cat1"></div>
@@ -69,7 +70,7 @@
         </section>
 
         <section>
-            <h2 id="browse-categories">Explore <strong id="choosen-name">Crime</strong></h2>
+            <h2 id="browse-categories">Discover <strong id="choosen-name">Crime</strong></h2>
 
             <div id="cat-menu"></div>
 
@@ -80,11 +81,7 @@
         </section>
     </main>
 
-    <footer>
-        <a href="">Privacy & Legal</a>
-        <a href="">Ad Choices</a>
-        <a href="">Accessibility</a>
-        <a href="">Manage Cookies</a>
+    <footer id="about">
         <h4>© 2024 Just Stream It. Tous droits réservés.</h4>
     </footer>
 
