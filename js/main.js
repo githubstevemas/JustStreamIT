@@ -8,6 +8,7 @@ function display_modal(details) {
     details_img.innerHTML = '';
     let img = document.createElement('img');
     img.src = details.image_url;
+    
     details_img.appendChild(img);
 
     img.onerror = function () {
@@ -20,13 +21,9 @@ function display_details(details) {
     let details_container = document.getElementById('details-text');
     details_container.innerHTML = '';
 
-    let details_title = document.createElement('p');
+    let details_title = document.createElement('h3');
     details_title.textContent = details.title;
     details_container.appendChild(details_title);
-
-    let details_directors = document.createElement('p');
-    details_directors.textContent = "Directed by : " + details.directors;
-    details_container.appendChild(details_directors);
 
     let details_genres = document.createElement('p');
     details_genres.textContent = details.genres;
@@ -37,24 +34,20 @@ function display_details(details) {
     details_container.appendChild(details_year);
 
     let details_imdb = document.createElement('p');
-    details_imdb.textContent = "IMdb : " + details.imdb_score;
+    details_imdb.innerHTML = "<img src='images/imdb.png' alt='imdb logo' style='width: 30px; height: auto;'> " + " " + details.imdb_score + " - " + " Box office ($) : " + details.worldwide_gross_income;
     details_container.appendChild(details_imdb);
 
+    let details_directors = document.createElement('p');
+    details_directors.innerHTML = "<span style='font-weight: bold'>Directed by :</span> " + details.directors.join(', ') + " " + "( " + details.countries + " )";
+    details_container.appendChild(details_directors);
+
     let details_actors = document.createElement('p');
-    details_actors.textContent = "Cast : " + details.actors;
+    details_actors.innerHTML = "<span style='font-weight: bold'>Cast :</span> " + details.actors.join(', ');
     details_container.appendChild(details_actors);
 
-    let details_countries = document.createElement('p');
-    details_countries.textContent = "Country : " + details.countries;
-    details_container.appendChild(details_countries);
-
-    let details_worldwide_gross_income = document.createElement('p');
-    details_worldwide_gross_income.textContent = "Worldwide gross : " + details.worldwide_gross_income;
-    details_container.appendChild(details_worldwide_gross_income);
-
-    let details_long_description = document.createElement('p');
-    details_long_description.textContent = "Description : " + details.long_description;
-    details_container.appendChild(details_long_description);
+    let details_description = document.createElement('p');
+    details_description.innerHTML = "<span style='font-weight: bold'>Description :</span> " + details.long_description;
+    details_container.appendChild(details_description);
 };
 
 
@@ -66,7 +59,7 @@ function display_movie(movies_list, cat_id) {
     for (let i = 1; i < movies_list.length; i++) {
 
         let container = document.createElement('a');
-        container.classList.add('images-container');
+        container.classList.add('movie-container');
 
         let img = document.createElement('img');
         img.src = movies_list[i].image_url;
@@ -81,10 +74,6 @@ function display_movie(movies_list, cat_id) {
         title.textContent = movies_list[i].title
         title.classList.add('image-title');
         container.appendChild(title);
-
-        img.addEventListener('mouseenter', function () {
-            title.classList.add('show-title');
-        });
 
         container.addEventListener('click', function () {
 
@@ -169,17 +158,14 @@ fetch('http://localhost:8000/api/v1/genres/?&page_size=30')
 
             categorie.addEventListener('click', function () {
 
-                let choosen_name = document.getElementById('best-cat3');
+                let choosen_name = document.getElementById('choosen-name');
                 choosen_name.textContent = drama_list[i].name;
-
-                let revealButton = document.getElementById('more-choosen-cat');
-                revealButton.style.display = "block";
 
                 fetch(url)
                     .then(response => response.json())
                     .then(datas => {
                         let choosen_list = datas.results;
-                        display_movie(choosen_list, 'choosen-cat');
+                        display_movie(choosen_list, 'best-cat3');
                     })
             })
 
@@ -192,7 +178,7 @@ fetch('http://localhost:8000/api/v1/titles/?genre=Crime&sort_by=-imdb_score&page
     .then(datas => {
 
         let crime_list = datas.results;
-        display_movie(crime_list, 'choosen-cat');
+        display_movie(crime_list, 'best-cat3');
     });
 
 
