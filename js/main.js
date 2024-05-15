@@ -1,8 +1,7 @@
 // With movie datas, get modal movie image.
 function displayImgModal(details) {
     var modal = document.getElementById('modal');
-    var display = modal.style.display;
-    modal.style.display = display === 'none' ? 'block' : 'none';
+    modal.style.display = 'block';
 
     let detailsImg = document.getElementById('details-img');
     detailsImg.innerHTML = '';
@@ -104,6 +103,17 @@ fetch('http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score')
                 title.textContent = movie.title;
                 let description = document.getElementById('best-description');
                 description.textContent = movie.long_description;
+                
+                let bestButton = document.getElementById('toggle-modal');
+                bestButton.addEventListener('click', function () {
+                    fetch(movie.url)
+                        .then(response => response.json())
+                        .then(details => {
+                            displayImgModal(details);
+                            displayModalDetails(details);
+                        });
+                });
+            
             });
     });
 
@@ -167,13 +177,6 @@ fetch('http://localhost:8000/api/v1/titles/?genre=Crime&sort_by=-imdb_score&page
         let crimeList = datas.results;
         displayCategoriesMovies(crimeList, 'best-cat3');
     });
-
-// Modal window management
-document.getElementById('toggle-modal').addEventListener('click', function () {
-    var modal = document.getElementById('modal');
-    var display = modal.style.display;
-    modal.style.display = display === 'none' ? 'block' : 'none';
-});
 
 document.getElementById('close-modal').addEventListener('click', function (event) {
     var modal = document.getElementById('modal');
