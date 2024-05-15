@@ -20,6 +20,10 @@ h2 {
     margin-bottom: 25px;
 }
 
+#slogan {
+    text-align: center;
+}
+
 #fixed-header {
     position: fixed;
     left: 0;
@@ -189,6 +193,7 @@ footer,
     opacity: 0;
     height: 60px;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
 }
