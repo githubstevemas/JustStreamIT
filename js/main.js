@@ -79,16 +79,20 @@ function displayCategoriesMovies(moviesList, catId) {
                     displayModalDetails(details);
                 });
         });
-
         catImages.appendChild(container);
     }
 }
 
+function fetchMovies(url) {
+    return fetch(url)
+        .then(response => response.json())
+        .then(datas => datas.results);
+}
+
 // Display best-movie container datas
-fetch('http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score')
-    .then(response => response.json())
-    .then(datas => {
-        let bestMovie = datas.results[0];
+fetchMovies('http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score')
+    .then(movieList => {
+        let bestMovie = movieList[0];
         let best = document.getElementById('best-movie');
         let img = document.createElement('img');
         img.src = bestMovie.image_url;
@@ -103,7 +107,7 @@ fetch('http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score')
                 title.textContent = movie.title;
                 let description = document.getElementById('best-description');
                 description.textContent = movie.long_description;
-                
+
                 let bestButton = document.getElementById('toggle-modal');
                 bestButton.addEventListener('click', function () {
                     fetch(movie.url)
@@ -113,50 +117,43 @@ fetch('http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score')
                             displayModalDetails(details);
                         });
                 });
-            
+
             });
     });
 
-// Display best-cat0 container datas
-fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7')
-    .then(response => response.json())
-    .then(datas => {
-        let moviesList = datas.results;
-        displayCategoriesMovies(moviesList, 'best-cat0');
+// Fetch and display best-cat0 container datas
+fetchMovies('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7')
+    .then(movieList => {
+        displayCategoriesMovies(movieList, 'best-cat0');
     });
 
-// Display best-cat1 container datas
-fetch('http://localhost:8000/api/v1/titles/?genre=horror&sort_by=-imdb_score&page_size=7')
-    .then(response => response.json())
-    .then(datas => {
-        let horrorList = datas.results;
-        displayCategoriesMovies(horrorList, 'best-cat1');
+// Fetch and display best-cat1 container datas
+fetchMovies('http://localhost:8000/api/v1/titles/?genre=horror&sort_by=-imdb_score&page_size=7')
+    .then(movieList => {
+        displayCategoriesMovies(movieList, 'best-cat1');
     });
 
-// Display best-cat2 container datas
-fetch('http://localhost:8000/api/v1/titles/?genre=Sci-Fi&sort_by=-imdb_score&page_size=7')
-    .then(response => response.json())
-    .then(datas => {
-        let scifiList = datas.results;
-        displayCategoriesMovies(scifiList, 'best-cat2');
+// Fetch and display best-cat2 container datas
+fetchMovies('http://localhost:8000/api/v1/titles/?genre=Sci-Fi&sort_by=-imdb_score&page_size=7')
+    .then(movieList => {
+        displayCategoriesMovies(movieList, 'best-cat2');
     });
+
 
 // Display all categories name for cat-menu container
-fetch('http://localhost:8000/api/v1/genres/?&page_size=30')
-    .then(response => response.json())
+fetchMovies('http://localhost:8000/api/v1/genres/?&page_size=30')
     .then(datas => {
-        let dramaList = datas.results;
-
-        for (let i = 0; i < dramaList.length; i++) {
+        console.log(datas)
+        for (let i = 0; i < datas.length; i++) {
             let categoriesList = document.getElementById('cat-menu');
             let categorie = document.createElement('a');
 
-            categorie.textContent = dramaList[i].name;
-            let url = `http://localhost:8000/api/v1/titles/?genre=${dramaList[i].name}&sort_by=-imdb_score&page_size=7`;
+            categorie.textContent = datas[i].name;
+            let url = `http://localhost:8000/api/v1/titles/?genre=${datas[i].name}&sort_by=-imdb_score&page_size=7`;
 
             categorie.addEventListener('click', function () {
                 let choosenName = document.getElementById('choosen-name');
-                choosenName.textContent = dramaList[i].name;
+                choosenName.textContent = datas[i].name;
 
                 fetch(url)
                     .then(response => response.json())
@@ -171,11 +168,9 @@ fetch('http://localhost:8000/api/v1/genres/?&page_size=30')
     });
 
 // Display best-cat3 container datas
-fetch('http://localhost:8000/api/v1/titles/?genre=Crime&sort_by=-imdb_score&page_size=7')
-    .then(response => response.json())
-    .then(datas => {
-        let crimeList = datas.results;
-        displayCategoriesMovies(crimeList, 'best-cat3');
+fetchMovies('http://localhost:8000/api/v1/titles/?genre=Crime&sort_by=-imdb_score&page_size=7')
+    .then(movieList => {
+        displayCategoriesMovies(movieList, 'best-cat3');
     });
 
 document.getElementById('close-modal').addEventListener('click', function (event) {
